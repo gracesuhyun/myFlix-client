@@ -2,7 +2,7 @@
   "name": "myflix-client",
   "version": "1.0.0",
   "description": "Grace's movie application",
-  "main": "sr\u001b[C\u001b[C\u001b[C\u001bsrc/index.html)",
+  "default": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,10 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/gracesuhyun/myFlix-client.git"
   },
-  "author": "",
+  "author": "Grace An",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gracesuhyun/myFlix-client/issues"
   },
-  "homepage": "https://github.com/gracesuhyun/myFlix-client#readme"
+  "homepage": "https://github.com/gracesuhyun/myFlix-client#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.18.5",
+    "@parcel/transformer-sass": "^2.0.0-rc.0"
+  }
 }
