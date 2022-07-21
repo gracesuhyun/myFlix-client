@@ -14,9 +14,11 @@ export function LoginView(props) {
 
     return(
         <div className="login-container">
+
             <div className="login-heading">
             <h2>Welcome to Grace's myFlix app!</h2>
             </div>
+
             <form>
                 <label>
                     Username:
@@ -30,6 +32,9 @@ export function LoginView(props) {
                 <br/><br/>
                 <button type="submit" onClick={handleSubmit}>Submit</button>
             </form>
+            <br/><br/>
+            <button type="button">Register now!</button>
+
         </div>
     );
 }
