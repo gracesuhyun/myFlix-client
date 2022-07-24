@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Container, Col, Row } from 'react-bootstrap';
 import './main-view.scss';
 
 import { LoginView } from '../login-view/login-view';
@@ -61,16 +62,29 @@ export class MainView extends React.Component {
     if (movies.length === 0)
       return <div className="main-view" />;
 
-      return (
-        <div className="main-view">
-        {selectedMovie
-          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-          ))
-        }
-      </div>
-      );
+    return (
+      <Container>
+        <Row className="main-view justify-content-md-center">
+          {selectedMovie
+            ? (
+              <Col md={8}>
+                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => 
+                  { this.setSelectedMovie(newSelectedMovie); }}/>
+              </Col>
+              )
+
+            : (
+              <Col md={8}>
+                {movies.map(movie => (
+                <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => 
+                  { this.setSelectedMovie(movie) }}/>
+                ))}
+              </Col>
+              )
+          }
+        </Row>
+      </Container>
+    );
   }
 }
 

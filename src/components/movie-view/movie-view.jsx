@@ -1,5 +1,8 @@
 import React from 'react';
-import './movie-view.scss'
+import PropTypes from 'prop-types';
+import './movie-view.scss';
+
+import { Container, Row, Col, Button, Card, CardGroup } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
 
@@ -22,21 +25,23 @@ export class MovieView extends React.Component {
         const {movie, onBackClick} = this.props;
 
         return (
+            // <Container fluid style={{ paddingTop: '0.75rem' }}>
+            //     <Row>
+            //         <CardGroup>
+
+            //         </CardGroup>
+            //     </Row>
+            // </Container>
             <div className="movie-view">
 
                 <div className="movie-poster">
-                    <img crossOrigin="anonymous" height="300" src={movie.ImagePath} />
+                    <img crossOrigin="" src={movie.ImagePath} />
                 </div>
 
                 <div className="movie-title">
                     <span className="label">Title: </span>
                     <span className="value">{movie.Title}</span>
                 </div>
-
-                {/* <div className="movie-genre">
-                    <span className="label">Genre: </span>
-                    <span className="value">{movie.Genre.name}</span>
-                </div> */}
 
                 <div className="movie-description">
                     <span className="label">Description: </span>
