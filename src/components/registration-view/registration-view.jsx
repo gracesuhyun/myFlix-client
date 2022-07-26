@@ -16,15 +16,17 @@ export function RegistrationView(props) {
   };
 
     return(
-      <Container>
+      <Container className="registration-container">
         <Row>
           <Col>
             <CardGroup>
-              <Card>
+              <Card className="registration-card">
+
                 <Card.Header>Register for Grace's movie app!</Card.Header>
+
                 <Form>
 
-                  <Form.Group>
+                  <Form.Group className="form-group">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control 
                     type="text" 
@@ -34,7 +36,7 @@ export function RegistrationView(props) {
                     required />
                   </Form.Group>
                   
-                  <Form.Group>
+                  <Form.Group className="form-group">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control 
                     type="password" 
@@ -45,7 +47,7 @@ export function RegistrationView(props) {
                     required />
                   </Form.Group>
 
-                  <Form.Group>
+                  <Form.Group className="form-group">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control 
                     type="email" 

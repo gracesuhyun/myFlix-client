@@ -1,7 +1,37 @@
+body {
+  font-family: "Cabin", sans-serif;
+}
+.login-container {
+  font-family: "Cabin", sans-serif;
+}
 
+.form-group {
+  border-top: 20px;
+}
+.registration-container {
+  font-family: "Cabin", sans-serif;
+}
 
+.registration-card {
+  padding: 15px;
+}
 
-
+.form-group {
+  border-top: 20px;
+}
+.movie-card {
+  font-family: "Cabin", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  max-width: 200px;
+}
+.movie-view-container {
+  font-family: "Cabin", sans-serif;
+  text-align: center;
+}
 .my-flix {
   color: steelblue;
 }

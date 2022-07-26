@@ -55,8 +55,8 @@ export class MainView extends React.Component {
     if (!user) 
     return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
-    // if (!registered) 
-    // return <RegistrationView onRegistration={register => this.onRegistration(register)} />;
+    if (!registered) 
+    return <RegistrationView onRegistration={register => this.onRegistration(register)} />;
 
     // Before the movies have been loaded
     if (movies.length === 0)
@@ -67,19 +67,21 @@ export class MainView extends React.Component {
         <Row className="main-view justify-content-md-center">
           {selectedMovie
             ? (
-              <Col md={8}>
+              <Col>
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => 
                   { this.setSelectedMovie(newSelectedMovie); }}/>
               </Col>
               )
 
             : (
-              <Col md={8}>
-                {movies.map(movie => (
-                <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => 
-                  { this.setSelectedMovie(movie) }}/>
-                ))}
-              </Col>
+              <Container>
+                <Row>
+                    {movies.map(movie => (
+                    <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => 
+                      { this.setSelectedMovie(movie) }}/>
+                    ))}
+                </Row>
+              </Container>
               )
           }
         </Row>

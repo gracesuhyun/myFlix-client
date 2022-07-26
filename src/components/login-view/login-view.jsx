@@ -14,7 +14,7 @@ export function LoginView(props) {
   };
 
   return(
-    <Container>
+    <Container className="login-container">
       <Row>
         <Col>
           <Card>
@@ -22,7 +22,7 @@ export function LoginView(props) {
             <Card.Title>Please Log In</Card.Title>
 
             <Form>
-              <Form.Group>
+              <Form.Group className="form-group">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control 
                 type="text" 
@@ -31,7 +31,7 @@ export function LoginView(props) {
                 required />
               </Form.Group>
 
-              <Form.Group>
+              <Form.Group className="form-group">
                 <Form.Label>Password:</Form.Label>
                 <Form.Control 
                 type="password" 
@@ -39,7 +39,7 @@ export function LoginView(props) {
                 placeholder="Password must be at least 5 characters"
                 required minLength="5" />
               </Form.Group>
-
+              
               <Button variant="primary" type="submit" onClick={handleSubmit}>
                 Submit
               </Button>
