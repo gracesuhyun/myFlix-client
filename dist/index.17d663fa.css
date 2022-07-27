@@ -1,15 +1,13 @@
-body {
-  font-family: "Cabin", sans-serif;
-}
+
 .login-container {
-  font-family: "Cabin", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .form-group {
   border-top: 20px;
 }
 .registration-container {
-  font-family: "Cabin", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .registration-card {
@@ -20,17 +18,22 @@ body {
   border-top: 20px;
 }
 .movie-card {
-  font-family: "Cabin", sans-serif;
+  font-family: "Tenali Ramakrishna", sans-serif;
+  font-size: 35px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-content: center;
+  text-align: center;
   flex-wrap: wrap;
-  max-width: 200px;
+  max-width: 150px;
 }
 .movie-view-container {
-  font-family: "Cabin", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
+}
+
+.movie-title {
+  font-family: "Tenali Ramakrishna", sans-serif;
 }
 .my-flix {
   color: steelblue;
