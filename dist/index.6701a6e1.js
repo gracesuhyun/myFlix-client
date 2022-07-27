@@ -42022,7 +42022,7 @@ MovieCard.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"bIHix","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"bpSXr","react-bootstrap":"h2YVd","./movie-card.scss":"cF5gT"}],"cF5gT":[function() {},{}],"ikZdr":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","./movie-card.scss":"cF5gT","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"bIHix","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"bpSXr"}],"cF5gT":[function() {},{}],"ikZdr":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3741 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
