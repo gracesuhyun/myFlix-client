@@ -37,15 +37,34 @@ export class MainView extends React.Component {
     });
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username
     });
+
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
   }
 
   onRegistration(registered) {
     this.setState({
       registered,
+    });
+  }
+
+  getMovies(token) {
+    axios.get('https://gracean-movies.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer${token}`}
+    })
+    .then(response => {
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
 
@@ -62,28 +81,28 @@ export class MainView extends React.Component {
       return <div className="main-view" />;
 
     return (
-      <Container>
-        <Row className="main-view">
+      <Container className="fluid">
           {selectedMovie
             ? (
-              <Col>
+              <Row className="justify-content-md-center">
+              <Col md={8}>
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => 
                   { this.setSelectedMovie(newSelectedMovie); }}/>
               </Col>
+              </Row>
               )
 
             : (
-              <Container>
-                <Row>
+                <Row className="justify-content-md-center">
                     {movies.map(movie => (
+                      <Col lg={2} md={4} sm={6}>
                     <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => 
                       { this.setSelectedMovie(movie) }}/>
+                      </Col>
                     ))}
                 </Row>
-              </Container>
               )
           }
-        </Row>
       </Container>
     );
   }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Container, Col, Row, Form, Button, Card, CardGroup } from 'react-bootstrap';
 import './login-view.scss';
@@ -9,8 +10,18 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    props.onLoggedIn(username);
+
+    axios.post('https://gracean-movies.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+    .then(response => {
+      const data = response.data;
+      props.onLoggedIn(data);
+    })
+    .catch(e => {
+      console.log('No Such User')
+    });
   };
 
   return(
@@ -53,7 +64,7 @@ export function LoginView(props) {
   );
 }
 
-LoginView.PropTypes = {
+LoginView.propTypes = {
     user: PropTypes.shape({
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired

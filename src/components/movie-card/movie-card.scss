@@ -1,10 +1,7 @@
 .movie-card {
 	font-family: 'Tenali Ramakrishna', sans-serif;
 	font-size: 35px;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
 	text-align: center;
-	flex-wrap: wrap;
+	cursor: pointer;
 	max-width: 150px;
 }

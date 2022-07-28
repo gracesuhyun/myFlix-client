@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import './movie-view.scss';
 
 import { Container, Row, Col } from 'react-bootstrap';

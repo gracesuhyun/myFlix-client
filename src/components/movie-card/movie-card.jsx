@@ -9,16 +9,18 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props;
     
     return (
-
+      <Container className="card-container">
+        <Row>
+          <Col>
             <CardGroup>
                 <Card className="movie-card">
-                  <Card.Img height="200" variant="top" crossOrigin="" src={movie.ImagePath} />
+                  <Card.Img height="180" variant="link" crossOrigin="" src={movie.ImagePath} onClick={() => onMovieClick(movie)} />
                     <Card.Title>{movie.Title}</Card.Title>
-                    
-                    <Button onClick={() => onMovieClick(movie)} variant="link">Open</Button>
                 </Card>
             </CardGroup>
-
+          </Col>
+        </Row>
+      </Container>
     );
 
   }
@@ -26,10 +28,8 @@ export class MovieCard extends React.Component {
 
 MovieCard.propTypes = {
     movie: PropTypes.shape({
-      Title: PropTypes.string.isRequired,
-    //   Genre: PropTypes.string.isRequired,
-      // Description: PropTypes.string.isRequired,
-      ImagePath: PropTypes.string.isRequired
+      ImagePath: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired
     }).isRequired,
     onMovieClick: PropTypes.func.isRequired
   };
