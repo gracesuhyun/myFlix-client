@@ -10,18 +10,9 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios.post('https://gracean-movies.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    })
-    .then(response => {
-      const data = response.data;
-      props.onLoggedIn(data);
-    })
-    .catch(e => {
-      console.log('No Such User')
-    });
+    console.log(username, password);
+    
+    props.onLoggedIn(username)
   };
 
   return(

@@ -30,44 +30,22 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
-
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
     });
   }
-
-  onLoggedIn(authData) {
-    console.log(authData);
+  onLoggedIn(user) {
     this.setState({
-      user: authData.user.Username
+      user
     });
-
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token);
   }
-
   onRegistration(registered) {
     this.setState({
       registered,
     });
   }
-
-  getMovies(token) {
-    axios.get('https://gracean-movies.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}`}
-    })
-    .then(response => {
-      this.setState({
-        movies: response.data
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
+  
   render() {
     const {movies, selectedMovie, user, registered} = this.state;
 
