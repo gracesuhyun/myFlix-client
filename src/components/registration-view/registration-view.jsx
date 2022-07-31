@@ -56,7 +56,7 @@ export function RegistrationView(props) {
                     required/>
                   </Form.Group>
 
-                  <Button varient="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+                  <Button varient="danger" type="submit" onClick={handleSubmit}>Submit</Button>
 
                 </Form>
               </Card>

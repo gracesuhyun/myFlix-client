@@ -10,9 +10,18 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    
-    props.onLoggedIn(username)
+    /* Send a request to the server for authentication */
+    axios.post('https://gracean-movies.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+    .then(response => {
+      const data = response.data;
+      props.onLoggedIn(data);
+    })
+    .catch(e => {
+      console.log('no such user')
+    });
   };
 
   return(
@@ -42,7 +51,7 @@ export function LoginView(props) {
                 required minLength="5" />
               </Form.Group>
               
-              <Button variant="primary" type="submit" onClick={handleSubmit}>
+              <Button variant="danger" type="submit" onClick={handleSubmit}>
                 Submit
               </Button>
             </Form>
