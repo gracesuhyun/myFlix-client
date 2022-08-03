@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Container, Col, Row, Form, Button, Card, CardGroup } from 'react-bootstrap';
+import { Container, Col, Row, Form, Button, Card, CardGroup, Navbar } from 'react-bootstrap';
 import './login-view.scss';
 
 export function LoginView(props) {
@@ -10,21 +10,14 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(username, password);
     /* Send a request to the server for authentication */
-    axios.post('https://gracean-movies.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    })
-    .then(response => {
-      const data = response.data;
-      props.onLoggedIn(data);
-    })
-    .catch(e => {
-      console.log('no such user')
-    });
+    /* then call props.onLoggedIn(username), which provides the username to our parent component (child to parent communication) */
+    props.onLoggedIn(username)
   };
 
   return(
+
     <Container className="login-container">
       <Row>
         <Col>
@@ -51,7 +44,7 @@ export function LoginView(props) {
                 required minLength="5" />
               </Form.Group>
               
-              <Button variant="danger" type="submit" onClick={handleSubmit}>
+              <Button variant="primary" type="submit" onClick={handleSubmit}>
                 Submit
               </Button>
             </Form>

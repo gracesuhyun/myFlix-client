@@ -13,8 +13,8 @@ export class MovieCard extends React.Component {
         <Row>
           <Col>
             <CardGroup>
-                <Card className="movie-card">
-                  <Card.Img height="180" variant="link" crossOrigin="" src={movie.ImagePath} onClick={() => onMovieClick(movie)} />
+                <Card className="my-3 movie-card">
+                  <Card.Img height="170" variant="link" crossOrigin="" src={movie.ImagePath} onClick={() => onMovieClick(movie)} />
                     <Card.Title>{movie.Title}</Card.Title>
                 </Card>
             </CardGroup>

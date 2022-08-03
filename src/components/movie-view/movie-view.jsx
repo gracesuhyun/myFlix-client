@@ -1,5 +1,4 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import './movie-view.scss';
 
 import { Container, Row, Col } from 'react-bootstrap';
@@ -25,12 +24,13 @@ export class MovieView extends React.Component {
         const {movie, onBackClick} = this.props;
 
         return (
+            
             <Container className="movie-view-container">
 
                 <Row>
                 <Col>
                     <div className="movie-image">
-                    <img height="500" crossOrigin="" src={movie.ImagePath} />
+                    <img height="400" crossOrigin="" src={movie.ImagePath} />
                     </div>
                 </Col>
                 </Row>
