@@ -4,7 +4,8 @@
   "description": "Grace's myFlix movie application",
   "default": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
     "@babel/generator": "^7.18.2",

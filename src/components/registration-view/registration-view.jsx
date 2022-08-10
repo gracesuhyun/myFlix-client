@@ -83,7 +83,7 @@ export function RegistrationView(props) {
             <CardGroup>
               <Card className="registration-card">
 
-                <Card.Header>Register for Grace's movie app!</Card.Header>
+                <Card.Title>Register for Grace's movie app!</Card.Title>
 
                 <Form>
 
@@ -131,9 +131,19 @@ export function RegistrationView(props) {
                     {values.emailErr && <p>{values.emailErr}</p>}
                   </Form.Group>
 
+                  <Form.Group controlId="form-bday" className="form-group">
+                    <Form.Label>Date of Birth {"(mm/dd/yyyy)"}:</Form.Label>
+                    <Form.Control 
+                    type="birthday" 
+                    value={birthday} 
+                    placeholder="optional"
+                    onChange={e => setBirthday(e.target.value)}
+                    />
+                  </Form.Group>
+
                   <Button varient="danger" type="submit" onClick={handleSubmit}>Submit</Button>
-                  <p></p>
-                  <p>Already registered? <Link to={'/'}>Sign in here!</Link></p>
+                  {/* <p></p>
+                  <p>Already registered? <Link to={'/login'}>Sign in here!</Link></p> */}
 
                 </Form>
               </Card>

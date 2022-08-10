@@ -43,7 +43,6 @@ export function LoginView(props) {
     })
     .then(response => {
       const data = response.data;
-      console.log(data,'data');
       props.onLoggedIn(data);
     })
     .catch(e => {
@@ -54,7 +53,7 @@ export function LoginView(props) {
 
   return(
 
-    <Container className="login-container">
+    <Container className="py-5 login-container">
       <Row>
         <Col>
           <Card>
@@ -107,6 +106,5 @@ export function LoginView(props) {
 }
 
 LoginView.propTypes = {
-  onLoggedIn: PropTypes.func.isRequired,
-  setRegistered: PropTypes.func.isRequired,
+  onLoggedIn: PropTypes.func.isRequired
 };

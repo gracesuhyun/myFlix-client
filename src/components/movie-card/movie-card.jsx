@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './movie-card.scss';
 
-import { Link } from 'react-router-dom';
-
 import { Container, Row, Col, Button, Card, CardGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export class MovieCard extends React.Component {
   render() {
@@ -16,17 +15,15 @@ export class MovieCard extends React.Component {
           <Col>
             <CardGroup>
                 <Card className="my-3 movie-card">
+                <Link to={`/movies/${movie._id}`}>
                   <Card.Img 
                     height="170" 
-                    variant="link" 
                     crossOrigin="" 
                     src={movie.ImagePath} />
                   <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
-                    <Link to={`/movies/${movie._id}`}>
-                      <Button variant="link">Open</Button>
-                    </Link>
                   </Card.Body>
+                  </Link>
                 </Card>
             </CardGroup>
           </Col>
@@ -41,6 +38,5 @@ MovieCard.propTypes = {
     movie: PropTypes.shape({
       ImagePath: PropTypes.string.isRequired,
       Title: PropTypes.string.isRequired
-    }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+    }).isRequired
   };
