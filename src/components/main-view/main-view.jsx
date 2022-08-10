@@ -96,13 +96,15 @@ export class MainView extends React.Component {
           <Route exact path="/" render={() => {
             return movies.map(m => (
               <Col lg={2} md={4} sm={6} key={m._id}>
-                <MovieCard movie={m} />
+                <MovieCard 
+                movie={m} />
               </Col>
             ))
           }} />
           <Route path="/movies/:movieId" render={({ match }) => {
             return <Col md={8}>
-              <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
+              <MovieView 
+              movie={movies.find(m => m._id === match.params.movieId)} />
             </Col>
           }} />
 
@@ -114,7 +116,9 @@ export class MainView extends React.Component {
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
             return <Col md={8}>
-              <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
+              <MovieView 
+              movie={movies.find(m => m._id === match.params.movieId)} 
+              onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
@@ -137,14 +141,18 @@ export class MainView extends React.Component {
           <Route path="/directors/:name" render={({ match, history }) => {
             if (movies.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
+              <DirectorView 
+              director={movies.find(m => m.Director.Name === match.params.name).Director} 
+              onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
           <Route path="/genres/:name" render={({ match, history }) => {
             if (movies.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
+              <GenreView 
+              genre={movies.find(m => m.Genre.Name === match.params.name).Genre} 
+              onBackClick={() => history.goBack()} />
             </Col>
           }} />
         </Row>
