@@ -257,20 +257,30 @@ export class ProfileView extends React.Component {
                             FavoriteMovies.find((fav) => fav === movie._id)
                           ) {
                             return (
-                              <Card className="favorite-movie card-content" key={movie._id}>
+                            <Col
+                            xs={9}
+                            sm={{ span: 9, offset: 2 }}
+                            md={{ span: 5, offset: 0 }}
+                            lg={4}
+                            xl={3}
+                            className="mb-3"
+                              >
+                              <Card className="favmovie-card" key={movie._id}>
                                 <Card.Img
-                                  className="fav-poster"
+                                  className="favmovie-image"
+                                  height="200"
                                   variant="top"
-                                  crossOrigin="anonymous"
+                                  crossOrigin=""
                                   src={movie.ImagePath}
                                 />
-                                <Card.Body style={{ backgroundColor: "black" }}>
+                                <Card.Body>
                                   <Card.Title className="movie_title">
                                     {movie.Title}
                                   </Card.Title>
                                   <Button size="sm" variant="danger" value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove</Button>
                                 </Card.Body>
                               </Card>
+                              </Col>
                             );
                           }
                         })}

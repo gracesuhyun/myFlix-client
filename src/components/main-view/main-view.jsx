@@ -20,7 +20,8 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      user: null
+      user: null,
+      favoriteMovies: []
     };
   }
 
@@ -34,16 +35,15 @@ export class MainView extends React.Component {
     }
   }
 
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-  
+  onLoggedIn = (authData) => {
+    const { username, email, birthday, favoriteMovies } = authData.user;
+    this.setState({ username, favoriteMovies: favoriteMovies || [] });
     localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
+    localStorage.setItem('username', username);
+    localStorage.setItem('email', email);
+    localStorage.setItem('birthday', birthday);
     this.getMovies(authData.token);
-  }
+  };
 
   getMovies(token) {
     axios.get('https://gracean-movies.herokuapp.com/movies/', {
@@ -59,14 +59,32 @@ export class MainView extends React.Component {
     })
   }
 
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie
-    });
+  handleFavorite = (movieId, action) => {
+    const { username, favoriteMovies } = this.state;
+    const accessToken = localStorage.getItem('token');
+    if (accessToken !== null && username !== null) {
+      if (action === 'add') {
+        this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
+        axios
+          .post(
+            `https://gracean-movies.herokuapp.com/users/${username}/movies/${movieId}`,
+            {},
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((res) => {
+            console.log(`Movie added to favorite movies`);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
   }
   
   render() {
-    const {movies, user} = this.state;
+    const {movies, user, favoriteMovies} = this.state;
 
     return (
 
@@ -101,6 +119,8 @@ export class MainView extends React.Component {
             return <Col md={6}>
               <MovieView 
               movie={movies.find(m => m._id === match.params.movieId)} 
+              handleFavorite={this.handleFavorite}
+              isFavorite={favoriteMovies.includes(match.params.movieId)}
               onBackClick={() => history.goBack()} />
             </Col>
           }} />

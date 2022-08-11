@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './movie-view.scss';
 import { Link } from 'react-router-dom';
 
-import { Container, Card } from 'react-bootstrap';
+import { Container, Card, Button } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
 
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, isFavorite, handleFavorite } = this.props;
 
     return (
       <Container className="my-3 movie-view">
@@ -29,13 +30,23 @@ export class MovieView extends React.Component {
               <span className="label">Genre: </span>
               <Link to={`/genres/${movie.Genre.name}`}>{movie.Genre.name}</Link>
             </div>
-            </Card.Text>
-            <Card.Text>
             <div className="movie-director">
               <span className="label">Director: </span>
               <Link to={`/directors/${movie.Director.name}`}>{movie.Director.name}</Link>
             </div>
+            {!isFavorite ? (
+                  <Button
+                    className="my-4 ml-2"
+                    variant="outline-primary"
+                    onClick={() => handleFavorite(movie._id, 'add')}
+                  >
+                    Add to Favorite Movies
+                  </Button>
+                ) : (
+                  <div />
+                )}
             </Card.Text>
+
             <button onClick={() => { onBackClick(null); }}>Back</button>
         </Card.Body>
         </Card>
@@ -43,3 +54,10 @@ export class MovieView extends React.Component {
     );
   }
 }
+
+MovieView.propTypes = {
+    movie: PropTypes.shape({
+      ImagePath: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired
+    }).isRequired
+  };
