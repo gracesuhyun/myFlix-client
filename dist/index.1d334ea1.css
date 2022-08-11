@@ -5,6 +5,17 @@
 .form-group {
   border-top: 20px;
 }
+.registration-container {
+  font-family: "Roboto", sans-serif;
+}
+
+.registration-card {
+  padding: 15px;
+}
+
+.form-group {
+  border-top: 20px;
+}
 .movie-card {
   font-family: "Tenali Ramakrishna", sans-serif;
   font-size: 35px;
@@ -20,23 +31,12 @@
 .label, .value {
   font-family: "Tenali Ramakrishna", sans-serif;
 }
-.registration-container {
-  font-family: "Roboto", sans-serif;
-}
-
-.registration-card {
-  padding: 15px;
-}
-
-.form-group {
-  border-top: 20px;
-}
-
 
 .genre-card {
   font-family: "Tenali Ramakrishna", sans-serif;
   color: black;
 }
+
 .navbar {
   background-color: white;
 }

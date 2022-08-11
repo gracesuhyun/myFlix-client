@@ -35,15 +35,16 @@ export class MainView extends React.Component {
     }
   }
 
-  onLoggedIn = (authData) => {
-    const { username, email, birthday, favoriteMovies } = authData.user;
-    this.setState({ username, favoriteMovies: favoriteMovies || [] });
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username
+    });
+  
     localStorage.setItem('token', authData.token);
-    localStorage.setItem('username', username);
-    localStorage.setItem('email', email);
-    localStorage.setItem('birthday', birthday);
+    localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-  };
+  }
 
   getMovies(token) {
     axios.get('https://gracean-movies.herokuapp.com/movies/', {
