@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import { Container, Col, Row, Form, Button, Card } from 'react-bootstrap';
 import './login-view.scss';
 
@@ -52,13 +55,13 @@ export function LoginView(props) {
   };
 
   return(
-
+    <Router>
     <Container className="py-5 login-container">
       <Row>
         <Col>
           <Card>
             <Card.Body>
-            <Card.Title>Please Log In</Card.Title>
+            <Card.Title className="text-center">Welcome to myFlix!</Card.Title>
 
             <Form>
               <Form.Group className="form-group">
@@ -82,26 +85,21 @@ export function LoginView(props) {
               </Form.Group>
               
               <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Submit
+                Sign in
               </Button>
             </Form>
 
             </Card.Body>
 
-            <Card.Footer>
-              <Button
-                className="ma-0 col-10 offset-1"
-                variant="link"
-                onClick={() => props.setRegistered(false)}
-              >
-                Not Registered? Sign Up Here!
-              </Button>
+            <Card.Footer className="text-center">
+              By logging in, you are agreeing to our terms and conditions.
             </Card.Footer>
 
           </Card>
         </Col>
       </Row>
     </Container>
+    </Router>
   );
 }
 

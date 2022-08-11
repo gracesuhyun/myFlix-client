@@ -22,7 +22,7 @@ export function RegistrationView(props) {
   //validate function
   const validate = () => {
     let isReq = true;
-    if (name) {
+    if (!name) {
       setValues({...values, nameErr: 'Name is required'});
       isReq = false;
     }
@@ -66,24 +66,22 @@ export function RegistrationView(props) {
       .then(response => {
         const data = response.data;
         console.log(data);
-        alert('Registration successful, please log in!')
         window.open('/', '_self');
       })
-      .catch(response => {
-        console.error(response);
-        alert('unable to register');
+      .catch(e => {
+        console.log('error: registration failed');
       });
     }
   };
 
     return(
-      <Container className="registration-container">
+      <Container className="my-3 registration-container">
         <Row>
           <Col>
             <CardGroup>
               <Card className="registration-card">
 
-                <Card.Title>Register for Grace's movie app!</Card.Title>
+                <Card.Title className="text-center">Sign up here to gain access to myFlix!</Card.Title>
 
                 <Form>
 
@@ -142,8 +140,6 @@ export function RegistrationView(props) {
                   </Form.Group>
 
                   <Button varient="danger" type="submit" onClick={handleSubmit}>Submit</Button>
-                  {/* <p></p>
-                  <p>Already registered? <Link to={'/login'}>Sign in here!</Link></p> */}
 
                 </Form>
               </Card>

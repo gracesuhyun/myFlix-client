@@ -1,29 +1,38 @@
 import React from 'react';
-import { Container, Row, Button } from 'react-bootstrap';
-import { MovieCard } from '../movie-card/movie-card';
+import './director-view.scss';
+import { Link } from 'react-router-dom';
+import { Container, Card, Button } from 'react-bootstrap';
 
 export class DirectorView extends React.Component {
 
   render() {
-    const { director, directorMovies, goBack } = this.props;
-    
+    const { movie, director, onBackClick } = this.props;
+
     return (
-      <Container className="mt-5">
-        <h1>{director.name} </h1>
-        <p>Born in {director.dateOfBirth}</p>
-        <Button className="mb-4" variant="warning" onClick={goBack}>
-        Back
-        </Button>
-        <h2 className="subtitle">Description: </h2>
-        <p>{director.description}</p>
-        <h2 className="subtitle">Movies Directed: </h2>
-        <Row className="justify-content-center mt-3">
-          {directorMovies.map((movie) => (
-            <MovieCard key={movie._id} movie={movie}>
-              {movie.title}
-            </MovieCard>
-          ))}
-        </Row>
+      <Container className="my-3">
+        <Card className="my-3">
+          <Card.Body>
+            <Card.Title>Director</Card.Title>
+
+            <Card.Text>
+              <span className="label">Name: </span>
+              <span className="value">{director.name}</span>
+            </Card.Text>
+
+            <Card.Text>
+              <span className="label">Description: </span>
+              <span className="value">{director.description}</span>
+            </Card.Text>
+
+            <Card.Text>
+              <span className="label">Date of Birth: </span>
+              <span className="value">{director.dateOfBirth}</span>
+            </Card.Text>
+
+          </Card.Body>
+        </Card>
+
+        <Button variant="primary" onClick={() => { onBackClick(); }}>Back</Button>
       </Container>
     );
   }

@@ -12,14 +12,13 @@
   cursor: pointer;
   max-width: 150px;
 }
-.movie-view-container {
+.movie-view {
   font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
 .label, .value {
   font-family: "Tenali Ramakrishna", sans-serif;
-  color: white;
 }
 .registration-container {
   font-family: "Roboto", sans-serif;
@@ -34,7 +33,13 @@
 }
 
 
+.genre-card {
+  font-family: "Tenali Ramakrishna", sans-serif;
+  color: black;
+}
 .navbar {
   background-color: white;
 }
+
+
 /*# sourceMappingURL=index.1d334ea1.css.map */
