@@ -20,10 +20,10 @@ export function NavBar({user}) {
   };
 
   return (
-    <Navbar className="nav-bar" sticky="top" bg="dark" expand="lg" variant="dark">
+    <Navbar className="nav-bar" sticky="top" bg="dark" expand="sm" variant="dark">
       <Container>
         <Navbar.Brand className="navbar-logo" href="/">myFlix</Navbar.Brand>
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse className="justify-content-end">
           <Nav className="m1-auto">
             {isAuth() && (
               <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>

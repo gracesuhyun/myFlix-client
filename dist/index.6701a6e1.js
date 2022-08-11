@@ -45744,7 +45744,7 @@ function NavBar({ user  }) {
         className: "nav-bar",
         sticky: "top",
         bg: "dark",
-        expand: "lg",
+        expand: "sm",
         variant: "dark",
         __source: {
             fileName: "src/components/nav-bar/nav-bar.jsx",
@@ -45769,7 +45769,7 @@ function NavBar({ user  }) {
                     children: "myFlix"
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Collapse, {
-                    id: "responsive-navbar-nav",
+                    className: "justify-content-end",
                     __source: {
                         fileName: "src/components/nav-bar/nav-bar.jsx",
                         lineNumber: 26
