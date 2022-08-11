@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './profile-view.scss';
 
 import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
@@ -11,11 +12,11 @@ export class ProfileView extends React.Component {
     super();
 
     this.state = {
-      Username: null,
-      Password: null,
-      Email: null,
-      Birthday: null,
-      FavoriteMovies: []
+      username: null,
+      password: null,
+      email: null,
+      birthday: null,
+      favoriteMovies: []
     };
   }
 
@@ -33,19 +34,24 @@ export class ProfileView extends React.Component {
     window.open('/', '_self');
   }
 
+  formatDate(date) {
+    if (date) date = date.substring(0, 10);
+    return date;
+  }
+
   getUser = (token) => {
-    const Username = localStorage.getItem('user');
+    const username = localStorage.getItem('user');
     axios
-      .get(`https://gracean-movies.herokuapp.com/users/${Username}`, {
+      .get(`https://gracean-movies.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-          FavoriteMovies: response.data.FavoriteMovies
+          username: response.data.Username,
+          password: response.data.Password,
+          email: response.data.Email,
+          birthday: this.formatDate(response.data.Birthday),
+          favoriteMovies: response.data.FavoriteMovies
         });
       })
       .catch(function (error) {
@@ -55,17 +61,17 @@ export class ProfileView extends React.Component {
 
   editUser = (e) => {
     e.preventDefault();
-    const Username = localStorage.getItem('user');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
     axios
       .put(
-        `https://gracean-movies.herokuapp.com/users/${Username}`,
+        `https://gracean-movies.herokuapp.com/users/${username}`,
         {
-          Username: this.state.Username,
-          Password: this.state.Password,
-          Email: this.state.Email,
-          Birthday: this.state.Birthday
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email,
+          birthday: this.state.birthday
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -73,13 +79,13 @@ export class ProfileView extends React.Component {
       )
       .then((response) => {
         this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday
+          username: response.data.username,
+          password: response.data.password,
+          email: response.data.email,
+          birthday: response.data.birthday
         });
 
-        localStorage.setItem('user', this.state.Username);
+        localStorage.setItem('user', this.state.username);
         alert("Profile updated");
         window.open('/profile', '_self');
       })
@@ -88,34 +94,31 @@ export class ProfileView extends React.Component {
       });
   };
 
-  onRemoveFavorite = (e, movie) => {
-    e.preventDefault();
-    const Username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+  removeFavorite(movie) {
+    const username = localStorage.getItem('user');
+    let token = localStorage.getItem("token");
 
     axios
-      .delete(
-        `https://gracean-movies.herokuapp.com/users/${Username}/movies/${movie._id}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
+      .delete(`https://gracean-movies.herokuapp.com/users/${username}/movies/${movie._id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         console.log(response);
-        alert("Movie removed");
+        alert("Movie successfully removed from favorites")
         this.componentDidMount();
       })
       .catch(function (error) {
         console.log(error);
       });
-  };
+  }
 
-  onDeleteUser() {
-    const Username = localStorage.getItem('user');
+  deleteUser() {
+    if (!confirm("Are you sure you want to delete your account?")) return;
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
     axios
-      .delete(`https://gracean-movies.herokuapp.com/users/${Username}`, {
+      .delete(`https://gracean-movies.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -132,33 +135,37 @@ export class ProfileView extends React.Component {
 
   setUsername(value) {
     this.setState({
-      Username: value
+      username: value
     });
   }
 
   setPassword(value) {
     this.setState({
-      Password: value
+      password: value
     });
   }
 
   setEmail(value) {
     this.setState({
-      Email: value
+      email: value
     });
   }
 
   setBirthday(value) {
     this.setState({
-      Birthday: value
+      birthday: value
     });
   }
 
   render() {
     const { movies, onBackClick } = this.props;
-    const { FavoriteMovies, Username, Password, Email, Birthday } = this.state;
+    const { username, password, email, birthday } = this.state;
 
-    if (!Username) {
+    const favoriteMovieList = movies.filter((movie) => {
+      return this.state.favoriteMovies.includes(movie._id);
+    });
+
+    if (!username) {
       return null;
     }
 
@@ -172,60 +179,60 @@ export class ProfileView extends React.Component {
                 <Form className="update-form" onSubmit={(e) =>
                   this.editUser(
                     e,
-                    this.Username,
-                    this.Password,
-                    this.Email,
-                    this.Birthday
+                    this.username,
+                    this.password,
+                    this.email,
+                    this.birthday
                   )}>
 
                   <Form.Group className="my-3">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>username</Form.Label>
                     <Form.Control
                       type="text"
-                      name="Username"
-                      placeholder="New Username"
-                      value={Username}
+                      name="username"
+                      placeholder="New username"
+                      value={username}
                       onChange={(e) => this.setUsername(e.target.value)}
                       required
                     />
                   </Form.Group>
 
                   <Form.Group className="my-3">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>password</Form.Label>
                     <Form.Control
                       type="password"
-                      name="Password"
-                      placeholder="New Password"
-                      value={Password}
+                      name="password"
+                      placeholder="New password"
+                      value={password}
                       onChange={(e) => this.setPassword(e.target.value)}
                       required
                     />
                   </Form.Group>
 
                   <Form.Group className="my-3">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>email</Form.Label>
                     <Form.Control
                       type="email"
-                      name="Email"
-                      placeholder="Enter Email"
-                      value={Email}
+                      name="email"
+                      placeholder="Enter email"
+                      value={email}
                       onChange={(e) => this.setEmail(e.target.value)}
                       required
                     />
                   </Form.Group>
 
                   <Form.Group className="my-3">
-                    <Form.Label>Birthday</Form.Label>
+                    <Form.Label>birthday</Form.Label>
                     <Form.Control
                       type="full-date"
-                      name="Birthday"
-                      value={Birthday}
+                      name="birthday"
+                      value={birthday}
                       onChange={(e) => this.setBirthday(e.target.value)}
                     />
                   </Form.Group>
                   <div className="mt-3">
                     <Button variant="success" type="submit" onClick={this.editUser}>Update User</Button>
-                    <Button className="ml-3" variant="danger" onClick={() => this.onDeleteUser()}>Delete User</Button>
+                    <Button className="ml-3" variant="danger" onClick={() => this.deleteUser()}>Delete User</Button>
                   </div>
                 </Form>
               </Card.Body>
@@ -238,56 +245,35 @@ export class ProfileView extends React.Component {
 
             <Row>
               <Col>
-                <h4 id="fm_text_color">{Username}'s Favorite Movies</h4>
+                <h4 id="fm_text_color">{username}'s Favorite Movies</h4>
               </Col>
             </Row>
 
             <Row>
-              <Col>
-                <Card>
-                  <Card.Body>
-                    {FavoriteMovies.length === 0 && (
-                      <div className="text-center" id="fm_text_color">No Favorite Movies</div>
-                    )}
-                    <Row className="favorite-container">
-                      {FavoriteMovies.length > 0 &&
-                        movies.map((movie) => {
-                          if (
-                            movie._id ===
-                            FavoriteMovies.find((fav) => fav === movie._id)
-                          ) {
-                            return (
-                            <Col
-                            xs={9}
-                            sm={{ span: 9, offset: 2 }}
-                            md={{ span: 5, offset: 0 }}
-                            lg={4}
-                            xl={3}
-                            className="mb-3"
-                              >
-                              <Card className="favmovie-card" key={movie._id}>
-                                <Card.Img
-                                  className="favmovie-image"
-                                  height="200"
-                                  variant="top"
-                                  crossOrigin=""
-                                  src={movie.ImagePath}
-                                />
-                                <Card.Body>
-                                  <Card.Title className="movie_title">
-                                    {movie.Title}
-                                  </Card.Title>
-                                  <Button size="sm" variant="danger" value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove</Button>
-                                </Card.Body>
-                              </Card>
-                              </Col>
-                            );
-                          }
-                        })}
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </Col>
+            {favoriteMovieList.map((movie) => {
+              return (
+                <div key={movie._id}>
+                  <Card style={{ width: '10rem' }} 
+                        className="favorite-card">
+                    <Link to={`/movies/${movie._id}`}>
+                      <Card.Img 
+                        className="movie-card-link"
+                        variant="top" 
+                        crossOrigin="" 
+                        src={movie.ImagePath} />
+                    </Link>
+                
+                    <Button 
+                      className="remove-favorite"
+                      variant="danger"
+                      size="sm"
+                      onClick={() => this.removeFavorite(movie)}>
+                        Remove
+                    </Button>
+                  </Card>
+                </div>
+                );
+              })}
             </Row>
           </Card.Body>
         </Card>
@@ -308,3 +294,51 @@ ProfileView.propTypes = {
   })).isRequired,
   onBackClick: PropTypes.func.isRequired
 };
+
+
+
+{/* <Col>
+<Card>
+  <Card.Body>
+    {favoriteMovies.length === 0 && (
+      <div className="text-center" id="fm_text_color">No Favorite Movies</div>
+    )}
+    <Row className="favorite-container">
+      {favoriteMovies.length > 0 &&
+        movies.map((movie) => {
+          if (
+            movie._id ===
+            favoriteMovies.find((fav) => fav === movie._id)
+          ) {
+            return (
+            <Col
+            xs={9}
+            sm={{ span: 9, offset: 2 }}
+            md={{ span: 5, offset: 0 }}
+            lg={4}
+            xl={3}
+            className="mb-3"
+              >
+              <Card className="favmovie-card" key={movie._id}>
+                <Card.Img
+                  className="favmovie-image"
+                  height="200"
+                  variant="top"
+                  crossOrigin=""
+                  src={movie.ImagePath}
+                />
+                <Card.Body>
+                  <Card.Title className="movie_title">
+                    {movie.Title}
+                  </Card.Title>
+                  <Button size="sm" variant="danger" value={movie._id} onClick={(e) => this.removeFavorites(e, movie)}>Remove</Button>
+                </Card.Body>
+              </Card>
+              </Col>
+            );
+          }
+        })}
+    </Row>
+  </Card.Body>
+</Card>
+</Col> */}
