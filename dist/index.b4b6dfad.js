@@ -29531,9 +29531,6 @@ var _mainViewScss = require("./main-view.scss");
 class MainView extends (0, _reactDefault.default).Component {
     constructor(){
         super();
-        this.state = {
-            user: null
-        };
     }
     componentDidMount() {
         let accessToken = localStorage.getItem("token");
@@ -29544,9 +29541,6 @@ class MainView extends (0, _reactDefault.default).Component {
     }
     onLoggedIn(authData) {
         console.log(authData);
-        this.setState({
-            user: authData.user.Username
-        });
         localStorage.setItem("token", authData.token);
         localStorage.setItem("user", authData.user.Username);
         this.getMovies(authData.token);
@@ -29563,15 +29557,14 @@ class MainView extends (0, _reactDefault.default).Component {
         });
     }
     render() {
-        let { movies  } = this.props;
-        let { user  } = this.state;
+        let { movies , user  } = this.props;
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navBar.NavBar), {
                     user: user
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 68,
+                    lineNumber: 60,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -29597,7 +29590,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 72,
+                                lineNumber: 64,
                                 columnNumber: 9
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -29613,7 +29606,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 82,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -29629,15 +29622,12 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 89,
+                                lineNumber: 81,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 path: `/users/${user}`,
-                                render: ({ match , history  })=>{
-                                    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Redirect), {
-                                        to: "/"
-                                    }, void 0, false, void 0, void 0);
+                                render: ({ history  })=>{
                                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                         md: 10,
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
@@ -29649,7 +29639,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 97,
+                                lineNumber: 89,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -29665,7 +29655,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 104,
+                                lineNumber: 95,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -29681,31 +29671,32 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 112,
+                                lineNumber: 103,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 71,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 70,
+                    lineNumber: 62,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 67,
+            lineNumber: 59,
             columnNumber: 7
         }, this);
     }
 }
 let mapStateToProps = (state)=>{
     return {
-        movies: state.movies
+        movies: state.movies,
+        user: state.user
     };
 };
 exports.default = (0, _reactRedux.connect)(mapStateToProps, {

@@ -22,9 +22,6 @@ class MainView extends React.Component {
 
   constructor() {
     super();
-    this.state = {
-      user: null
-    };
   }
 
   componentDidMount() {
@@ -37,10 +34,6 @@ class MainView extends React.Component {
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-  
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
@@ -59,8 +52,7 @@ class MainView extends React.Component {
   }
   
   render() {
-    let { movies } = this.props;
-    let { user } = this.state;
+    let { movies, user } = this.props;
 
     return (
 
@@ -94,8 +86,7 @@ class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path={`/users/${user}`} render={({ match, history}) => {
-            if (!user) return <Redirect to='/' />
+          <Route path={`/users/${user}`} render={({ history}) => {
             return <Col md={10}>
             <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
             </Col>
@@ -125,7 +116,7 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return {movies: state.movies}
+  return {movies: state.movies, user: state.user}
 }
 
 export default connect(mapStateToProps, { setMovies, setUser }) (MainView);
