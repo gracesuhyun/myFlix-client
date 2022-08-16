@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { setUser } from '../../actions/actions';
 
 import { Container, Col, Row, Form, Button, Card } from 'react-bootstrap';
 import './login-view.scss';
 
-export function LoginView(props) {
+function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
   //declare hook for each input
@@ -47,6 +47,7 @@ export function LoginView(props) {
     .then(response => {
       const data = response.data;
       props.onLoggedIn(data);
+      props.setUser(username); 
     })
     .catch(e => {
       console.log('no such user')
@@ -106,3 +107,5 @@ export function LoginView(props) {
 LoginView.propTypes = {
   onLoggedIn: PropTypes.func.isRequired
 };
+
+export default connect(null, { setUser })(LoginView);

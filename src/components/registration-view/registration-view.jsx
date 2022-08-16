@@ -125,6 +125,7 @@ export function RegistrationView(props) {
                     type="email" 
                     value={email} 
                     onChange={e => setEmail(e.target.value)}
+                    placeholder="Enter your email"
                     required/>
                     {values.emailErr && <p>{values.emailErr}</p>}
                   </Form.Group>

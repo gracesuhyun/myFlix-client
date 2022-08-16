@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
@@ -30,9 +30,7 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
+      this.props.setUser(localStorage.getItem('user'));
       this.getMovies(accessToken);
     }
   }
@@ -130,4 +128,4 @@ let mapStateToProps = state => {
   return {movies: state.movies}
 }
 
-export default connect(mapStateToProps, { setMovies }) (MainView);
+export default connect(mapStateToProps, { setMovies, setUser }) (MainView);
