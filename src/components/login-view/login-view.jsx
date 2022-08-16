@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
 import { Container, Col, Row, Form, Button, Card } from 'react-bootstrap';
