@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './movie-view.scss';
 import { Link } from 'react-router-dom';
 
-import { Container, Card, Button } from 'react-bootstrap';
+import { Container, Card, Button, ListGroup } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
   constructor() {
@@ -34,41 +34,40 @@ export class MovieView extends React.Component {
       <Container className="my-3 movie-view">
         <Card>
         <Card.Img 
-          crossOrigin="" 
-          src={movie.ImagePath} />
+          crossOrigin=""
+          src={movie.ImagePath} 
+          height="500"/>
           
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text> 
-            <div className="movie-description">
-              <span className="label">Description: </span><br/>
-              <span className="value">{movie.Description}</span>
-            </div>
-            </Card.Text>
-            <Card.Text>
+          <Card.Title style={{ textAlign: 'center' }}>{movie.Title}</Card.Title>
 
-            <div className="movie-genre">
-              <span className="label">Genre: </span>
-              <Link to={`/genres/${movie.Genre.name}`}>{movie.Genre.name}</Link>
-            </div>
+          <ListGroup className="list-group-flush">
+          <ListGroup.Item> <span class="card-subtitle">Description: </span> {movie.Description} </ListGroup.Item>
 
-            <div className="movie-director">
-              <span className="label">Director: </span>
+          <ListGroup.Item> <span class="card-subtitle">Genre: </span>
+            <Link to={`/genres/${movie.Genre.name}`}>{movie.Genre.name}</Link>
+          </ListGroup.Item>
+
+          <ListGroup.Item> <span class="card-subtitle">Director: </span>
               <Link to={`/directors/${movie.Director.name}`}>{movie.Director.name}</Link>
-            </div>
+          </ListGroup.Item>
+          
+          </ListGroup>
+          </Card.Body>
 
+          <Card.Footer className="text-muted" style={{ textAlign: 'center' }}>
             <Button
                 variant="dark"
-                className="fav-button"
+                className="m-2 fav-button"
                 size="sm"
                 onClick={() => this.addFavorite(movie)}
               >
               Add to Favorites
               </Button>
-            </Card.Text>
-
+            
             <button onClick={() => { onBackClick(null); }}>Back</button>
-        </Card.Body>
+          </Card.Footer>
+          
         </Card>
       </Container>
     );

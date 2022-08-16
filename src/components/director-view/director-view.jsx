@@ -1,6 +1,5 @@
 import React from 'react';
 import './director-view.scss';
-import { Link } from 'react-router-dom';
 import { Container, Card, Button } from 'react-bootstrap';
 
 export class DirectorView extends React.Component {
@@ -10,7 +9,7 @@ export class DirectorView extends React.Component {
 
     return (
       <Container className="my-3">
-        <Card className="my-3">
+        <Card className="my-3 director-card">
           <Card.Body>
             <Card.Title>Director</Card.Title>
 
@@ -24,10 +23,10 @@ export class DirectorView extends React.Component {
               <span className="value">{director.description}</span>
             </Card.Text>
 
-            <Card.Text>
+            {/* <Card.Text>
               <span className="label">Date of Birth: </span>
               <span className="value">{director.dateOfBirth}</span>
-            </Card.Text>
+            </Card.Text> */}
 
           </Card.Body>
         </Card>

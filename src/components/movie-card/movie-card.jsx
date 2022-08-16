@@ -11,15 +11,15 @@ export class MovieCard extends React.Component {
     
     return (
       <Container className="card-container">
-        <Card className="my-3 movie-card">
-        <Link to={`/movies/${movie._id}`}>
+        <Card className="my-3 movie-card"  style={{ backgroundColor: '#000a12' }}>
+        <Link to={`/movies/${movie._id}`} style={{ textDecoration: 'none' }}>
           <Card.Img 
             height="170" 
             crossOrigin="" 
             src={movie.ImagePath} />
-          <Card.Body>
-            <Card.Title>{movie.Title}</Card.Title>
-          </Card.Body>
+            <Card.Body>
+            <Card.Subtitle className="mb-2" style={{ color: 'white' }}>{movie.Title}</Card.Subtitle>
+            </Card.Body>
           </Link>
         </Card>
       </Container>
