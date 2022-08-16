@@ -7,7 +7,7 @@ import MoviesList from '../movies-list/movies-list';
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-import { LoginView } from '../login-view/login-view';
+import LoginView from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
