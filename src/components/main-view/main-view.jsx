@@ -80,7 +80,7 @@ class MainView extends React.Component {
 
           <Route path="/movies" render={() => {
             if (!user) return <Redirect to='/' />
-            return <MoviesList movies={movies} />
+            return <MoviesList/>
           }} />
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
