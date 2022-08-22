@@ -78,10 +78,10 @@ class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path="/movies" render={() => {
+          {/* <Route path="/movies" render={() => {
             if (!user) return <Redirect to='/' />
             return <MoviesList/>
-          }} />
+          }} /> */}
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
             return <Col md={5}>
