@@ -59,7 +59,7 @@ function LoginView(props) {
 
   return(
     <Router>
-    <Container className="py-5 login-container">
+    <Container className="py-5 login-container" >
       <Row>
         <Col>
           <Card>
@@ -103,6 +103,7 @@ function LoginView(props) {
       </Row>
     </Container>
     </Router>
+    
   );
 }
 

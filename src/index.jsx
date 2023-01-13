@@ -8,7 +8,7 @@ import moviesApp from './reducers/reducers';
 
 import MainView from './components/main-view/main-view';
 
-import './index.scss';
+import './index.css';
 
 const store = createStore(moviesApp, devToolsEnhancer());
 
