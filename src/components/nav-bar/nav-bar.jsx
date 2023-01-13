@@ -20,7 +20,7 @@ export function NavBar({user}) {
   };
 
   return (
-    <Navbar className="nav-bar" sticky="top" bg="dark" expand="sm" variant="dark">
+    <Navbar className="nav-bar" sticky="top" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand className="navbar-logo" href="/">myFlix</Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">

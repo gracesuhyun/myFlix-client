@@ -43378,7 +43378,6 @@ function NavBar({ user  }) {
         className: "nav-bar",
         sticky: "top",
         bg: "dark",
-        expand: "sm",
         variant: "dark",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
             children: [
