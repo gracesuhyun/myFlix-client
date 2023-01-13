@@ -62,12 +62,12 @@ function LoginView(props) {
     <Container className="py-5 login-container" >
       <Row>
         <Col>
-          <Card>
+          <Card className='w-xs-auto '>
             <Card.Body>
             <Card.Title className="text-center">Welcome to myFlix!</Card.Title>
 
             <Form>
-              <Form.Group className="form-group">
+              <Form.Group className="mb-3">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control 
                 type="text" 
@@ -77,7 +77,7 @@ function LoginView(props) {
                 {usernameErr && (<p>{usernameErr}</p>)}
               </Form.Group>
 
-              <Form.Group className="form-group">
+              <Form.Group className="mb-3">
                 <Form.Label>Password:</Form.Label>
                 <Form.Control 
                 type="password" 
@@ -89,6 +89,10 @@ function LoginView(props) {
               
               <Button variant="primary" type="submit" onClick={handleSubmit}>
                 Sign in
+              </Button>
+
+              <Button variant="success" href="/register" className="float-right">
+                New? Sign up here!
               </Button>
             </Form>
 

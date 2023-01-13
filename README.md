@@ -18,7 +18,7 @@ https://github.com/gracesuhyun/myFlix-API
     "parcel": "^2.7.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.4.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^5.3.0",
