@@ -52,7 +52,8 @@ function LoginView(props) {
       props.setUser(username); 
     })
     .catch(e => {
-      console.log('no such user')
+      console.log('no such user');
+      alert("Sorry, we can't find an account with these login details. Please try again or register for a new account by clicking the 'New? Sign up here!' button.");
     });
     }
   };

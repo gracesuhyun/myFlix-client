@@ -253,9 +253,9 @@ export class ProfileView extends React.Component {
             <Row>
             {favoriteMovieList.map((movie) => {
               return (
-                <div key={movie._id}>
+                <div key={movie._id} className='mx-auto'>
                   <Card style={{ width: '10rem' }} 
-                        className="favorite-card">
+                        className="favorite-card my-3">
                     <Link to={`/movies/${movie._id}`}>
                       <Card.Img 
                         className="movie-card-link"
