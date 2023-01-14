@@ -32973,7 +32973,9 @@ function MoviesList(props) {
                 columnNumber: 5
             }, this),
             filteredMovies.map((m)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                    md: 2,
+                    sm: 6,
+                    md: 3,
+                    lg: 2,
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: m
                     }, void 0, false, {
@@ -39658,7 +39660,7 @@ class MovieCard extends (0, _reactDefault.default).Component {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
             className: "card-container",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-                className: "my-3 movie-card",
+                className: "my-3 mx-auto movie-card",
                 style: {
                     backgroundColor: "#000a12"
                 },

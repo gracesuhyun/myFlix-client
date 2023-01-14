@@ -11,7 +11,7 @@ export class MovieCard extends React.Component {
     
     return (
       <Container className="card-container">
-        <Card className="my-3 movie-card"  style={{ backgroundColor: '#000a12' }}>
+        <Card className="my-3 mx-auto movie-card" style={{ backgroundColor: '#000a12' }}>
         <Link to={`/movies/${movie._id}`} style={{ textDecoration: 'none' }}>
           <Card.Img 
             height="170" 
