@@ -1,0 +1,50 @@
+.movie-card {
+  text-align: center;
+  cursor: pointer;
+  max-width: 150px;
+  font-family: Tenali Ramakrishna, sans-serif;
+}
+
+
+
+.registration-container {
+  font-family: Roboto, sans-serif;
+}
+
+.registration-card {
+  padding: 15px;
+}
+
+.form-group {
+  border-top: 20px;
+}
+
+.movie-view {
+  font-family: Roboto, sans-serif;
+}
+
+.label, .value {
+  font-family: Tenali Ramakrishna, sans-serif;
+}
+
+.card-subtitle {
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+.navbar {
+  background-color: #fff;
+}
+
+
+
+* {
+  font-family: Roboto, sans-serif;
+}
+
+/*# sourceMappingURL=index.e3f97e84.css.map */

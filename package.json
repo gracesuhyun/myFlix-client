@@ -1,10 +1,11 @@
 {
   "name": "myflix-client",
   "version": "1.0.0",
-  "description": "Grace's movie application",
+  "description": "Grace's myFlix movie application",
   "default": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html"
   },
   "repository": {
     "type": "git",
@@ -18,14 +19,23 @@
   "homepage": "https://github.com/gracesuhyun/myFlix-client#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "parcel": "^2.7.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^5.3.0",
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
     "@babel/generator": "^7.18.2",
     "@babel/parser": "^7.18.5",
     "@babel/traverse": "^7.18.5",
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
+    "@parcel/transformer-sass": "^2.7.0",
+    "buffer": "^6.0.3",
+    "process": "^0.11.10"
   }
 }
